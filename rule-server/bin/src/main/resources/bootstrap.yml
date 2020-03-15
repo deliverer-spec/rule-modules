@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: cig-fenqi
+#  cloud:
+#    nacos:
+#      config:
+#        server-addr: 127.0.0.1:8848
+##        server-addr: 192.168.40.138:8848
+#        file-extension: yaml
+  profiles:
+    active: dev
+server:
+  port: 9000
+swagger:
+  enabled: true
+  base-package: com.ciana.tools.fenqi
+  title: ${spring.application.name}
+  version: 1.0.0.SNAPSHOT
+  description: 分期接口
+  contact:
+    name: admin

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <artifactId>rule-modules</artifactId>
+        <groupId>com.ciana</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    
+    <artifactId>rule-engine</artifactId>
+    <properties>
+    </properties>
+    <dependencies>
+		<dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.33</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>QLExpress</artifactId>
+            <version>3.2.3</version>
+        </dependency>
+        
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+	<distributionManagement>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>local Nexus Snapshot Repository</name>
+            <url>http://47.104.92.152:9009/nexus/content/repositories/snapshots/</url>
+        </snapshotRepository>
+		<repository>
+            <id>nexus-releases</id>  
+            <name>local Nexus Release Repository</name>  
+            <url>http://47.104.92.152:9009/nexus/content/repositories/releases/</url>  
+        </repository> 
+    </distributionManagement>
+</project>

@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: rule-server
+#  cloud:
+#    nacos:
+#      config:
+#        server-addr: 127.0.0.1:8848
+##        server-addr: 192.168.40.138:8848
+#        file-extension: yaml
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema.sql #，每次启动程序，程序都会运行schema.sql文件，对数据库的数据操作
+    data: classpath:db/data.sql #，每次启动程序，程序都会运行data.sql文件，对数据库的数据操作
+    #url: jdbc:h2:mem:test #配置h2数据库的连接地址
+    url: jdbc:h2:file:c:/work/database/h2db
+    username: sa
+    password: sa
+  h2:
+    console:
+      enabled: true #开启web console功能
+server:
+  port: 8799
+swagger:
+  enabled: true
+  base-package: com.ciana.rule.demo
+  title: ${spring.application.name}
+  version: 1.0.0.SNAPSHOT
+  description: ruledemo
+  contact:
+    name: admin
