@@ -3,7 +3,7 @@ package com.ciana.rule.engine.check.node;
 import java.util.Map;
 
 import com.ciana.rule.engine.check.CheckLog;
-import com.ciana.rule.engine.child.ChildUtil;
+import com.ciana.rule.engine.node.child.ChildUtil;
 import com.ciana.rule.engine.entity.Rule;
 import com.ciana.rule.engine.parse.RuleParse;
 import com.ciana.rule.engine.parse.entity.RuleNode;

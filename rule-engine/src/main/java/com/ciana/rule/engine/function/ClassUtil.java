@@ -1,5 +1,7 @@
 package com.ciana.rule.engine.function;
 
+import com.ciana.rule.engine.function.intf.ExecInterface;
+
 public class ClassUtil {
 
 	private static String NON_CLASS = "com.ciana.rule.engine.function.NonExecute";

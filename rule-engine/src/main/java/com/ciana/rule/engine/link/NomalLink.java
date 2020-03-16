@@ -3,6 +3,7 @@ package com.ciana.rule.engine.link;
 import java.util.List;
 import java.util.Map;
 
+import com.ciana.rule.engine.link.intf.LinkInterface;
 import com.ciana.rule.engine.parse.entity.RuleLink;
 import com.ciana.rule.engine.parse.entity.RuleNode;
 

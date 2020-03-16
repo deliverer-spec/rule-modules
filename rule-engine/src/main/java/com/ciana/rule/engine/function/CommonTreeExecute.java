@@ -2,6 +2,7 @@ package com.ciana.rule.engine.function;
 
 import java.util.Map;
 
+import com.ciana.rule.engine.function.intf.ExecInterface;
 import com.ciana.rule.engine.log.RuleLogDtl;
 import com.ciana.rule.engine.parse.entity.RuleNode;
 import com.ciana.rule.engine.run.RuleRunner;
@@ -9,8 +10,8 @@ import com.ciana.rule.engine.run.RuleRunner;
 public class CommonTreeExecute implements ExecInterface{
 
 	@Override
-	public Map<String, Object> initParams(RuleNode node, Map<String, Object> last_params, Boolean isTest) throws Exception {
-		return last_params;
+	public Map<String, Object> initParams(RuleNode node, Map<String, Object> lastParams, Boolean isTest) throws Exception {
+		return lastParams;
 	}
 	
 	@Override

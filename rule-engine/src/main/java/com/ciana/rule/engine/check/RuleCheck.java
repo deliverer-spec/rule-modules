@@ -36,6 +36,7 @@ public class RuleCheck {
 		if(linkList!=null && linkList.size()>0) {
 			//排序
 	 		linkList.sort(new Comparator() {
+	 			@Override
 				public int compare(Object o1, Object o2) {
 					Integer pri1 = ((RuleLink)o1).getPriority();
 					Integer pri2 = ((RuleLink)o2).getPriority();

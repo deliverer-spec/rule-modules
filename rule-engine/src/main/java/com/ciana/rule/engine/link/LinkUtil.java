@@ -1,5 +1,7 @@
 package com.ciana.rule.engine.link;
 
+import com.ciana.rule.engine.link.intf.LinkInterface;
+
 public class LinkUtil {
 
 	private static String NOMAL_CLASS = "com.ciana.rule.engine.link.NomalLink";

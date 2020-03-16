@@ -2,14 +2,15 @@ package com.ciana.rule.engine.function;
 
 import java.util.Map;
 
-import com.ciana.rule.engine.card.StarckEntity;
+import com.ciana.rule.engine.function.intf.ExecInterface;
 import com.ciana.rule.engine.log.RuleLogDtl;
+import com.ciana.rule.engine.node.card.StarckEntity;
 import com.ciana.rule.engine.parse.entity.RuleNode;
 import com.ciana.rule.engine.run.RuleRunner;
 
 public class CommonCardExecute implements ExecInterface{
 
-	/**
+	/*
 	 * Common 规则执行节点
 	
             规则条件： 在规则语法中属于  if 范围   规则动作：在规则语法中属于 then 范围
@@ -24,9 +25,9 @@ public class CommonCardExecute implements ExecInterface{
 	 */
 
 	@Override
-	public Map<String, Object> initParams(RuleNode node, Map<String, Object> last_params, Boolean isTest) throws Exception {
+	public Map<String, Object> initParams(RuleNode node, Map<String, Object> lastParams, Boolean isTest) throws Exception {
 		// TODO Auto-generated method stub
-		return last_params;
+		return lastParams;
 	}
 	
 	@Override

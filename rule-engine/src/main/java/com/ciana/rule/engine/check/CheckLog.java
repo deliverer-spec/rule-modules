@@ -40,7 +40,9 @@ public class CheckLog {
 	}
 	
 	private String getS(Integer depth) {
-		if ( depth == null)  depth = 0;
+		if ( depth == null) {
+			depth = 0;
+		}
 		String msg = "";
 		while(depth>0) {
 			msg = msg +"    ";

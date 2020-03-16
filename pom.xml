@@ -32,31 +32,17 @@
 	
 	<developers>
         <developer>
-            <name>cys</name>
-            <email>cys@qq.com</email>
+            <name>yinbo</name>
+            <email>278253683@qq.com</email>
         </developer>
     </developers>
     <dependencies>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.16.14</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
-    <repositories>
-		<!-- 私有库地址-->
-		<repository>
-			<id>nexus</id>
-			<url>http://47.104.92.152:9009/nexus/content/groups/public/</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-    </repositories>
     <!--依赖管理，用于管理spring-cloud的依赖，其中Camden.SR3是版本号-->
     <dependencyManagement>
         <dependencies>
@@ -82,50 +68,4 @@
         </dependencies>
     </dependencyManagement>
 
-	<distributionManagement>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <name>local Nexus Snapshot Repository</name>
-            <url>http://47.104.92.152:9009/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
-       <repository>  
-            <id>nexus-releases</id>  
-            <name>local Nexus Release Repository</name>  
-            <url>http://47.104.92.152:9009/nexus/content/repositories/releases/</url>  
-        </repository> 
-    </distributionManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${maven.compile.source}</source>
-                    <target>${maven.compile.target}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>2.4</version>
-                <executions>
-                    <execution>
-                        <id>attach-sources</id>
-                        <goals>
-                            <goal>jar-no-fork</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
-                <version>2.8.2</version>
-            </plugin>
-        </plugins>
-    </build>
 </project>

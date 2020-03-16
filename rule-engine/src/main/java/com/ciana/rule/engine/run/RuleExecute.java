@@ -8,18 +8,22 @@ import java.util.Map;
 import java.util.Stack;
 
 import com.alibaba.fastjson.JSON;
-import com.ciana.rule.engine.card.RCardStack;
-import com.ciana.rule.engine.card.StarckEntity;
 import com.ciana.rule.engine.function.ClassUtil;
-import com.ciana.rule.engine.function.ExecInterface;
-import com.ciana.rule.engine.link.LinkInterface;
+import com.ciana.rule.engine.function.intf.ExecInterface;
 import com.ciana.rule.engine.link.LinkUtil;
+import com.ciana.rule.engine.link.intf.LinkInterface;
 import com.ciana.rule.engine.log.RuleLog;
 import com.ciana.rule.engine.log.RuleLogDtl;
+import com.ciana.rule.engine.node.card.RCardStack;
+import com.ciana.rule.engine.node.card.StarckEntity;
 import com.ciana.rule.engine.parse.RuleParse;
 import com.ciana.rule.engine.parse.entity.RuleLink;
 import com.ciana.rule.engine.parse.entity.RuleNode;
-
+/**
+ * 规则执行
+ * @author yinbo
+ * @date: 2019/06/16 14:25
+ */
 public class RuleExecute {
 	
 	private Stack<StarckEntity> stack = null;
@@ -50,18 +54,7 @@ public class RuleExecute {
 		
 		return logList;
 	}
-	
-	//将  execute 的返回值作为是否叶子节点的结束依据 ，  树 + 表  
-	//决策流， 遇见错误则停止
-	//卡 ： 有两种情况，第一种   某个维度的判断只在一个节点上进行   这种不需要结束
-	//                第二种   叶子节点这是某个维度的一个条件       这种如果不结束，则使用符合条件的都记录，就是完全执行
-	
-	//参数处理有两种方案
-	//最大范围参数处理，即全程只维护一个map，所有参数全放里面
-	//严格参数处理。即每个节点都需要配置入参；data节点参数作用范围是子节点以下
-	//
-	//测试特殊逻辑：数据域增加设置默认值； 跳出规则不考虑类型（完全测试节点）
-	//
+
 	/**
 	 * 执行所有节点，回调  注意这些返回结果不要与接口返回结果混淆
 	 * 注意  首次传入的node一定要是start节点
@@ -80,7 +73,7 @@ public class RuleExecute {
 	 * @return  true 继续执行  ； false 不执行后续代码
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	private int execNode(String id, RuleParse parse, Map<String, Object> last_params, List<RuleLogDtl> logList) throws Exception{
+	private int execNode(String id, RuleParse parse, Map<String, Object> lastParams, List<RuleLogDtl> logList) throws Exception{
 		//取出node
 		RuleNode node = parse.getRuleNode(id);
 		//处理相应node
@@ -99,7 +92,7 @@ public class RuleExecute {
 		
 		ExecInterface execIntf = ClassUtil.getInstanceClass(parse.getRuletype(), node.getType());
 		//初始化参数
-		Map<String, Object> params = execIntf.initParams(node, last_params, parse.isDevp());
+		Map<String, Object> params = execIntf.initParams(node, lastParams, parse.isDevp());
 		
 		//执行条件
 		objIf = execIntf.ifExec(parse.getRuletype(), node, params, dLog);
@@ -156,17 +149,13 @@ public class RuleExecute {
 				//规则树，非叶子节点，条件不满足，以后节点不执行
 				return -1;
 			}
-//			else if(intObj==2) {
-//				//TODO 评分卡 返回叶子节点分值
-//				return 2;
-//			}
 		}
 		
 		
 		if(linkObj instanceof List) {
 			List<RuleLink> linkList = (List<RuleLink>)linkObj;
-			//排序
 	 		linkList.sort(new Comparator() {
+				@Override
 				public int compare(Object o1, Object o2) {
 					Integer pri1 = ((RuleLink)o1).getPriority();
 					Integer pri2 = ((RuleLink)o2).getPriority();

@@ -16,7 +16,7 @@ import lombok.EqualsAndHashCode;
  * 规则信息表
  * 
  * @author yinbo
- * @email 11@qq.com
+ * @email 278253683@qq.com
  * @date 2019-09-30 18:04:51
  */
 @Data

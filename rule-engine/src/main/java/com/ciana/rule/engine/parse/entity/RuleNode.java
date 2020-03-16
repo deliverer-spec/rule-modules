@@ -195,6 +195,8 @@ public class RuleNode {
 	public void setDevp(Boolean isDevp) {
 		this.isDevp = isDevp;
 	}
+	
+	@Override
 	public String toString() {
 		return id+"  "+name+"  "+ruleContent;
 	}
